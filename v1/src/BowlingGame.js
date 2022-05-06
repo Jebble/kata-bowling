@@ -23,7 +23,7 @@ class BowlingGame {
         applyBonusTimes = 2;
       }
       this.score += (rollScore * applyBonusTimes);
-      this.bonusRolls -= (1 * applyBonusTimes);
+      this.bonusRolls -= applyBonusTimes;
     }
 
     this.setBonusRolls(pins);
