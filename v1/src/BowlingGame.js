@@ -13,7 +13,7 @@ class BowlingGame {
     const rollScore = this.getScoreForRoll(pins);
     
     // Only add regular score for the 20 actual rolls - Ignoring bonus rolls for last frames
-    if (this.rolls.length <= 20) {
+    if (!this.isGameOver) {
       this.score += rollScore;
     }
 
@@ -54,9 +54,13 @@ class BowlingGame {
   }
 
   setBonusRolls(roll) {
-    if (this.rolls.length > 20) return // No bonus rolls are granted for the last frame bonusses
+    if (this.isGameOver) return // No bonus rolls are granted for the last frame bonusses
     if (roll === '/') this.bonusRolls += 1;
     if (roll === 'X') this.bonusRolls += 2;
+  }
+
+  get isGameOver() {
+    return this.rolls.length > 20
   }
 
   get totalScore() {
